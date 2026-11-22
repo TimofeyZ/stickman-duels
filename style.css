@@ -1,0 +1,326 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #101827;
+  color: #fff;
+  touch-action: none;
+  user-select: none;
+}
+
+button, select {
+  font: inherit;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#menu {
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at 20% 20%, #31577a 0, transparent 35%),
+    radial-gradient(circle at 80% 80%, #5b376c 0, transparent 35%),
+    linear-gradient(135deg, #101827, #18243a);
+}
+
+.menu-card {
+  width: min(580px, 100%);
+  padding: clamp(22px, 5vw, 42px);
+  border: 1px solid #ffffff25;
+  border-radius: 25px;
+  background: #101827d9;
+  box-shadow: 0 24px 80px #0007;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #91a8c7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(42px, 10vw, 76px);
+  line-height: .88;
+  letter-spacing: -3px;
+  font-weight: 1000;
+  text-shadow: 0 5px 0 #0005;
+}
+
+h1 span {
+  color: #ffc857;
+}
+
+.subtitle {
+  margin: 17px 0 28px;
+  color: #bdc9da;
+  font-size: 14px;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.setting {
+  display: grid;
+  gap: 8px;
+  color: #94a8c4;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.setting select {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 10px;
+  border: 1px solid #ffffff24;
+  border-radius: 11px;
+  outline: none;
+  color: white;
+  background: #26364d;
+  font-size: 14px;
+}
+
+.primary-button {
+  width: 100%;
+  min-height: 58px;
+  border: 0;
+  border-radius: 13px;
+  color: #1a2636;
+  background: linear-gradient(180deg, #ffdc78, #ffb83e);
+  font-size: 18px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  box-shadow: 0 6px 0 #b97524;
+  cursor: pointer;
+}
+
+.primary-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #b97524;
+}
+
+.hint {
+  margin: 20px 0 0;
+  color: #8192aa;
+  font-size: 11px;
+}
+
+#gameScreen {
+  background: #111b2a;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.game-header {
+  position: absolute;
+  z-index: 3;
+  top: 10px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: min(680px, 72%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.player-score {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #eaf1fb;
+  font-size: clamp(9px, 1.8vw, 13px);
+  font-weight: 900;
+  text-shadow: 0 2px 3px #0009;
+}
+
+.player-score b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 25px;
+  height: 25px;
+  border-radius: 8px;
+  color: #152235;
+  background: white;
+  font-size: 14px;
+}
+
+.player-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.blue { background: #50b9ff; }
+.red { background: #ff6868; }
+.arena-name {
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px #000;
+  white-space: nowrap;
+}
+
+.touch-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 0 16px max(14px, env(safe-area-inset-bottom));
+  pointer-events: none;
+}
+
+.control-side {
+  display: flex;
+  align-items: end;
+  gap: clamp(8px, 2vw, 20px);
+  pointer-events: none;
+}
+
+.joystick {
+  position: relative;
+  width: clamp(76px, 16vw, 118px);
+  height: clamp(76px, 16vw, 118px);
+  border: 2px solid #ffffff65;
+  border-radius: 50%;
+  background: #dce9ff26;
+  box-shadow: inset 0 0 20px #0002;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.stick {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 43%;
+  height: 43%;
+  border: 2px solid #ffffff9c;
+  border-radius: 50%;
+  background: #e8f2ffb8;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 3px 10px #0005;
+}
+
+.touch-button {
+  width: clamp(58px, 11vw, 82px);
+  height: clamp(58px, 11vw, 82px);
+  border: 2px solid #ffffff75;
+  border-radius: 50%;
+  color: white;
+  background: #253b5dcc;
+  font-size: clamp(8px, 1.5vw, 11px);
+  font-weight: 1000;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.touch-button:active, .touch-button.pressed {
+  background: #f0ae45e8;
+  transform: scale(.94);
+}
+
+.attack {
+  background: #c44d55d9;
+}
+
+.jump {
+  background: #3286b9d9;
+}
+
+.back-button {
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  left: 10px;
+  padding: 8px 12px;
+  border: 1px solid #ffffff50;
+  border-radius: 9px;
+  color: white;
+  background: #101827aa;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.round-message {
+  position: absolute;
+  z-index: 4;
+  top: 42%;
+  left: 50%;
+  padding: 14px 22px;
+  border: 1px solid #ffffff55;
+  border-radius: 14px;
+  color: white;
+  background: #101827e8;
+  font-size: clamp(18px, 4vw, 30px);
+  font-weight: 1000;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@media (orientation: portrait) {
+  #gameScreen::after {
+    content: "Поверни телефон горизонтально";
+    position: absolute;
+    z-index: 10;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 25px;
+    color: white;
+    background: #101827f5;
+    font-size: 22px;
+    font-weight: 900;
+    text-align: center;
+  }
+}
+
+@media (max-height: 430px) {
+  .touch-layer { padding-bottom: 8px; }
+  .joystick { width: 70px; height: 70px; }
+  .touch-button { width: 54px; height: 54px; }
+}
+
+/* Выбор оружия каждого игрока и отдельный ряд карты */
+.map-setting {
+  grid-column: 1 / -1;
+}

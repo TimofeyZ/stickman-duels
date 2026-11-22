@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#101827">
+  <title>Stickman Battle</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main id="app">
+    <section id="menu" class="screen">
+      <div class="menu-card">
+        <p class="eyebrow">ЛОКАЛЬНАЯ БИТВА · 2 ИГРОКА</p>
+        <h1>STICKMAN<br><span>BATTLE</span></h1>
+        <p class="subtitle">Сражайся. Прыгай. Побеждай.</p>
+
+        <div class="settings-grid">
+          <label class="setting">
+            <span>ОРУЖИЕ ИГРОКА 1</span>
+            <select id="weaponSelect1">
+              <option value="sword">Меч</option>
+              <option value="hammer">Молот</option>
+              <option value="spear">Копьё</option>
+              <option value="blaster">Бластер</option>
+            </select>
+          </label>
+
+          <label class="setting">
+            <span>ОРУЖИЕ ИГРОКА 2</span>
+            <select id="weaponSelect2">
+              <option value="hammer">Молот</option>
+              <option value="sword">Меч</option>
+              <option value="spear">Копьё</option>
+              <option value="blaster">Бластер</option>
+            </select>
+          </label>
+
+          <label class="setting map-setting">
+            <span>КАРТА</span>
+            <select id="mapSelect">
+              <option value="random">Случайная</option>
+              <option value="grass">Зелёная арена</option>
+              <option value="lava">Лавовая арена</option>
+              <option value="ice">Ледяная арена</option>
+              <option value="sky">Небесная арена</option>
+            </select>
+          </label>
+        </div>
+
+        <button id="startButton" class="primary-button">ИГРАТЬ</button>
+        <p class="hint">Для игры на телефоне поверни устройство горизонтально.</p>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen hidden">
+      <header class="game-header">
+        <div class="player-score"><span class="player-dot blue"></span> ИГРОК 1 <b id="score1">0</b></div>
+        <div class="arena-name" id="arenaName">ЗЕЛЁНАЯ АРЕНА</div>
+        <div class="player-score right"><b id="score2">0</b> ИГРОК 2 <span class="player-dot red"></span></div>
+      </header>
+
+      <canvas id="gameCanvas" aria-label="Игровая арена"></canvas>
+
+      <div class="touch-layer">
+        <div class="control-side left-controls">
+          <div class="joystick" id="joy1"><div class="stick"></div></div>
+          <button class="touch-button attack" id="attack1">АТАКА</button>
+        </div>
+        <div class="control-side right-controls">
+          <button class="touch-button attack" id="attack2">АТАКА</button>
+          <div class="joystick" id="joy2"><div class="stick"></div></div>
+        </div>
+      </div>
+
+      <div id="roundMessage" class="round-message hidden"></div>
+      <button id="backButton" class="back-button">МЕНЮ</button>
+    </section>
+  </main>
+</body>
+</html>
